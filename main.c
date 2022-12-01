@@ -3,6 +3,8 @@
 #include <time.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include "reader.c"
+#include "writer.c"
 
 #define DIML 40
 #define DIMC 40
@@ -78,7 +80,6 @@ void display(char array[DIML][DIMC])
             if(array[i][j] == Dead){
                 printf("  ");
             }
-            //printf("%c ", array[i][j]);
         }
     printf("\n");
     }    

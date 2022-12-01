@@ -3,10 +3,11 @@
 #include <time.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include "reader.c"
 #include "writer.c"
 
-#define DIML 10
-#define DIMC 10
+#define DIML 41
+#define DIMC 41
 
 void generate(char array[DIML][DIMC])
 {
@@ -138,16 +139,13 @@ void suivant(char array[DIML][DIMC])
     }
 }
 
+
 int main()
 {
     srand(time(NULL));
     
     char a[DIML][DIMC];
     char filename[] = "test.txt";
-    char b[DIML][DIMC];
-    generate_empty(b);
-    generate(a);
-    write_arr(filename, b);
     while(1)
     {
         printf("\033[2J");

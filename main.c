@@ -36,7 +36,7 @@ void display(char array[DIML][DIMC])
             printf(" %c ", array[i][j]);  
         }
     }
-        printf("\n");
+    printf("\n");
 }
 
 

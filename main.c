@@ -5,10 +5,10 @@
 #include <unistd.h>
 #include "writer.c"
 
-#define DIML 50
-#define DIMC 50
+#define DIML 10
+#define DIMC 10
 
-void genererate(char array[DIML][DIMC])
+void generate(char array[DIML][DIMC])
 {
     for (int i = 0; i < DIML; i++)
     {
@@ -26,6 +26,7 @@ void genererate(char array[DIML][DIMC])
         }
     }
 }
+
 
 void display(char array[DIML][DIMC])
 {
@@ -103,14 +104,8 @@ int main()
     
     char a[DIML][DIMC];
     char filename[] = "test.txt";
-    genererate(a);
+    generate(a);
     write_arr(filename, a);
-    while(1)
-    {
-        printf("\033[2J");
-        display(a);
-        suivant(a);
-        usleep(100000);
-    }
+
     return 0;
 }

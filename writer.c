@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define DIML 50
-#define DIMC 50
+#define DIML 10
+#define DIMC 10
 
 
 void write_arr(char filename[], char array[DIML][DIMC])
@@ -11,8 +11,9 @@ void write_arr(char filename[], char array[DIML][DIMC])
     for(int i=0; i<DIML; i++)
     {
         for(int j=0; j<DIMC; j++)
-        {
-            fprintf(file, "%c", array[DIML][DIMC]);
+        {          
+            fputc(array[i][j], file);
+            fputc(' ', file);
         }
         fprintf(file, "\n");
     }

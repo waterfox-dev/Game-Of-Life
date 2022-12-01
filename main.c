@@ -28,6 +28,7 @@ void generate(char array[DIML][DIMC])
 }
 
 
+
 void display(char array[DIML][DIMC])
 {
     for (int i = 0; i < DIML; i++)
@@ -37,7 +38,7 @@ void display(char array[DIML][DIMC])
             printf(" %c ", array[i][j]);  
         }
     }
-        printf("\n");
+    printf("\n");
 }
 
 

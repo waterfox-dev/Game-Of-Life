@@ -5,10 +5,10 @@
 #include <unistd.h>
 #include "writer.c"
 
-#define DIML 50
-#define DIMC 50
+#define DIML 10
+#define DIMC 10
 
-void genererate(char array[DIML][DIMC])
+void generate(char array[DIML][DIMC])
 {
     for (int i = 0; i < DIML; i++)
     {
@@ -27,6 +27,18 @@ void genererate(char array[DIML][DIMC])
     }
 }
 
+void generate_empty(char array[DIML][DIMC])
+{
+    for (int i = 0; i < DIML; i++)
+    {
+        for(int j = 0;  j < DIMC; j++)
+        {
+            array[i][j] = '.';
+        }
+    }
+}
+
+
 void display(char array[DIML][DIMC])
 {
     for (int i = 0; i < DIML; i++)
@@ -35,10 +47,16 @@ void display(char array[DIML][DIMC])
         {
             printf(" %c ", array[i][j]);  
         }
+<<<<<<< HEAD
     }
     printf("\n");
 }
+=======
+        printf("\n");
+    }
+>>>>>>> 72eea1ba6764ff6768e3f99f292b58a55c2e81e0
 
+}
 
 int count_alive(char array[DIML][DIMC], int x, int y)
 {
@@ -131,7 +149,11 @@ int main()
     srand(time(NULL));
     
     char a[DIML][DIMC];
-    genererate(a);
+    char filename[] = "test.txt";
+    char b[DIML][DIMC];
+    generate_empty(b);
+    generate(a);
+    write_arr(filename, b);
     while(1)
     {
         printf("\033[2J");

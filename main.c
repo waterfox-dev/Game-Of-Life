@@ -3,10 +3,9 @@
 #include <time.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include "writer.c"
 
-#define DIML 50
-#define DIMC 50
+#define DIML 20
+#define DIMC 20
 
 void genererate(char array[DIML][DIMC])
 {
@@ -27,13 +26,70 @@ void genererate(char array[DIML][DIMC])
     }
 }
 
-void display(char array[DIML][DIMC])
+void genererate_canon(char array[DIML][DIMC])
 {
     for (int i = 0; i < DIML; i++)
     {
         for (int j = 0; j < DIMC; j++)
         {
-            printf(" %c ", array[i][j]);
+            int rm = rand() % 2 + 1;
+            if (rm == 1)
+            {
+                array[i][j] = '.';
+            }
+            if(((i < 10 &&  i >= 8) && (j < 2 && j >= 0) )||( (i < 12 &&  i >= 10) && (j < 1 &&  j >= 0))){
+                array[i][j] = '@';
+            }
+
+        }
+    }
+}
+
+void display_column(){
+    if(DIMC >= 10){
+        printf("        ");
+        for (int j = 0; j < DIMC/10; j++)
+        {
+            printf("%d═══════════════════", j);
+        }
+        printf("\n");
+    }
+    printf("        ");
+    for (int j = 0; j < DIMC/10; j++)
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            printf("%d ", i);
+        }
+    }
+    printf("\n");
+    printf("        ");
+    for (int j = 0; j < DIMC/10; j++)
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            printf("══");
+        }
+    }
+    printf("\n");
+}
+
+void display(char array[DIML][DIMC])
+{
+    display_column();
+    for (int i = 0; i < DIML; i++)
+    {
+        if(DIML >= 10){
+            if(i%10 == 0){
+                printf("%d ║ %d ║ ", i/10, i%10);
+            }
+            else{
+                printf("  ║ %d ║ ", i%10);
+            }
+        }
+        for (int j = 0; j < DIMC; j++)
+        {
+            printf("%c ", array[i][j]);
         }
         printf("\n");
     }
@@ -97,19 +153,30 @@ void suivant(char array[DIML][DIMC])
     }
 }
 
+void add_living(char array[DIML][DIMC])
+{
+    int x;
+    int y;
+    printf("\nx : ");
+    scanf("%d", &x);
+    printf("\ny : ");
+    scanf("%d", &y);
+    array[x][y] = '@';
+}
+
 int main()
 {
     srand(time(NULL));
-    
+    //display_column();
     char a[DIML][DIMC];
-    char filename[] = "test.txt";
     genererate(a);
-    write_arr(filename, a);
+    //generate_canon(a);
+    //add_living(a);
     while(1)
     {
         printf("\033[2J");
         display(a);
-        suivant(a);
+        //suivant(a);
         usleep(100000);
     }
     return 0;

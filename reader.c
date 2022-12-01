@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define DIML 41
-#define DIMC 41
+#define DIML 40
+#define DIMC 40
 
 void read_arr(char filename[], char array[DIML][DIMC])
 {

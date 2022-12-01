@@ -75,7 +75,7 @@ void display(char array[DIML][DIMC])
         for (int j = 0; j < DIMC; j++)
         {
             if(array[i][j] == Living){
-                printf("■ ");
+                printf("\e[93m■\e[0m ");
             }
             if(array[i][j] == Dead){
                 printf("  ");
@@ -171,9 +171,39 @@ void suivant(char array[DIML][DIMC])
     }
 }
 
+#define MAX_LEN 128
+
+void print_image(FILE *fptr)
+{
+    char read_string[MAX_LEN];
+
+    while(fgets(read_string,sizeof(read_string),fptr) != NULL)
+        printf("%s",read_string);
+}
+
+void display_start(){
+    system("clear");
+    printf("\033[2J");
+    char *filename = "ascii.txt";
+    FILE *fptr = NULL;
+
+    if((fptr = fopen(filename,"r")) == NULL)
+    {
+        fprintf(stderr,"error opening %s\n",filename);
+    }
+    else{
+        print_image(fptr);
+        fclose(fptr);
+    }
+    usleep(1000000);
+}
+
 int main()
 {
     srand(time(NULL));
+
+    display_start();
+
     char a[DIML][DIMC];
     generate(a);
     while(1)

@@ -4,8 +4,8 @@
 #include "writer.c"
 #include "main.c"
 
-#define DIML 41
-#define DIMC 41
+#define DIML 40
+#define DIMC 40
 
 int main()
 {

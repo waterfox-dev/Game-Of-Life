@@ -27,6 +27,16 @@ void generate(char array[DIML][DIMC])
     }
 }
 
+void generate_empty(char array[DIML][DIMC])
+{
+    for (int i = 0; i < DIML; i++)
+    {
+        for(int j = 0;  j < DIMC; j++)
+        {
+            array[i][j] = '.';
+        }
+    }
+}
 
 
 void display(char array[DIML][DIMC])
@@ -37,10 +47,10 @@ void display(char array[DIML][DIMC])
         {
             printf(" %c ", array[i][j]);  
         }
+        printf("\n");
     }
-    printf("\n");
-}
 
+}
 
 int count_alive(char array[DIML][DIMC], int x, int y)
 {
@@ -133,13 +143,11 @@ int main()
     srand(time(NULL));
     
     char a[DIML][DIMC];
-<<<<<<< HEAD
     char filename[] = "test.txt";
+    char b[DIML][DIMC];
+    generate_empty(b);
     generate(a);
-    write_arr(filename, a);
-
-=======
-    genererate(a);
+    write_arr(filename, b);
     while(1)
     {
         printf("\033[2J");
@@ -147,6 +155,5 @@ int main()
         suivant(a);
         usleep(100000);
     }
->>>>>>> bf8efdbf67309c3a49bc8564e46fbcbec3885bf2
     return 0;
 }

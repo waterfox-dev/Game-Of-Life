@@ -4,10 +4,15 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+<<<<<<< HEAD
 #define DIML 20
 #define DIMC 20
+=======
+#define DIML 10
+#define DIMC 10
+>>>>>>> f4935b3bd4a8a8841d2801ffaa64d27693b21e27
 
-void genererate(char array[DIML][DIMC])
+void generate(char array[DIML][DIMC])
 {
     for (int i = 0; i < DIML; i++)
     {
@@ -26,6 +31,7 @@ void genererate(char array[DIML][DIMC])
     }
 }
 
+<<<<<<< HEAD
 void genererate_canon(char array[DIML][DIMC])
 {
     for (int i = 0; i < DIML; i++)
@@ -41,10 +47,20 @@ void genererate_canon(char array[DIML][DIMC])
                 array[i][j] = '@';
             }
 
+=======
+void generate_empty(char array[DIML][DIMC])
+{
+    for (int i = 0; i < DIML; i++)
+    {
+        for(int j = 0;  j < DIMC; j++)
+        {
+            array[i][j] = '.';
+>>>>>>> f4935b3bd4a8a8841d2801ffaa64d27693b21e27
         }
     }
 }
 
+<<<<<<< HEAD
 void display_column(){
     if(DIMC >= 10){
         printf("        ");
@@ -73,6 +89,8 @@ void display_column(){
     }
     printf("\n");
 }
+=======
+>>>>>>> f4935b3bd4a8a8841d2801ffaa64d27693b21e27
 
 void display(char array[DIML][DIMC])
 {
@@ -89,10 +107,21 @@ void display(char array[DIML][DIMC])
         }
         for (int j = 0; j < DIMC; j++)
         {
+<<<<<<< HEAD
             printf("%c ", array[i][j]);
+=======
+            printf(" %c ", array[i][j]);  
+>>>>>>> f4935b3bd4a8a8841d2801ffaa64d27693b21e27
         }
+<<<<<<< HEAD
+    }
+    printf("\n");
+}
+=======
         printf("\n");
     }
+>>>>>>> 72eea1ba6764ff6768e3f99f292b58a55c2e81e0
+
 }
 
 int count_alive(char array[DIML][DIMC], int x, int y)
@@ -102,9 +131,37 @@ int count_alive(char array[DIML][DIMC], int x, int y)
     {
         for(int j=y-1; j<=y+1; j++)
         {
-            if((i>=0 && i<DIML) && (j>=0 && j <DIMC))
+            if((i>0 && i<DIML-1) && (j>0 && j <DIMC-1))
             {
                 if(array[i][j] == '@')
+                {
+                    vivant++;
+                }
+            }
+            if(i==0)
+            {
+                if(array[DIMC-1][j] == '@')
+                {
+                    vivant++;
+                }
+            }
+            if(i==DIMC-1)
+            {
+                if(array[0][j] == '@')
+                {
+                    vivant++;
+                }
+            }
+            if(j==0)
+            {
+                if(array[i][DIML-1] == '@')
+                {
+                    vivant++;
+                }
+            }
+            if(j==DIML-1)
+            {
+                if(array[i][0] == '@')
                 {
                     vivant++;
                 }
@@ -169,9 +226,17 @@ int main()
     srand(time(NULL));
     //display_column();
     char a[DIML][DIMC];
+<<<<<<< HEAD
     genererate(a);
     //generate_canon(a);
     //add_living(a);
+=======
+    char filename[] = "test.txt";
+    char b[DIML][DIMC];
+    generate_empty(b);
+    generate(a);
+    write_arr(filename, b);
+>>>>>>> f4935b3bd4a8a8841d2801ffaa64d27693b21e27
     while(1)
     {
         printf("\033[2J");

@@ -34,11 +34,12 @@ void display(char array[DIML][DIMC])
     {
         for (int j = 0; j < DIMC; j++)
         {
-            printf(" %c ", array[i][j]);
+            printf(" %c ", array[i][j]);  
         }
-        printf("\n");
     }
+        printf("\n");
 }
+
 
 int count_alive(char array[DIML][DIMC], int x, int y)
 {
@@ -47,9 +48,37 @@ int count_alive(char array[DIML][DIMC], int x, int y)
     {
         for(int j=y-1; j<=y+1; j++)
         {
-            if((i>=0 && i<DIML) && (j>=0 && j <DIMC))
+            if((i>0 && i<DIML-1) && (j>0 && j <DIMC-1))
             {
                 if(array[i][j] == '@')
+                {
+                    vivant++;
+                }
+            }
+            if(i==0)
+            {
+                if(array[DIMC-1][j] == '@')
+                {
+                    vivant++;
+                }
+            }
+            if(i==DIMC-1)
+            {
+                if(array[0][j] == '@')
+                {
+                    vivant++;
+                }
+            }
+            if(j==0)
+            {
+                if(array[i][DIML-1] == '@')
+                {
+                    vivant++;
+                }
+            }
+            if(j==DIML-1)
+            {
+                if(array[i][0] == '@')
                 {
                     vivant++;
                 }
@@ -103,9 +132,20 @@ int main()
     srand(time(NULL));
     
     char a[DIML][DIMC];
+<<<<<<< HEAD
     char filename[] = "test.txt";
     generate(a);
     write_arr(filename, a);
 
+=======
+    genererate(a);
+    while(1)
+    {
+        printf("\033[2J");
+        display(a);
+        suivant(a);
+        usleep(100000);
+    }
+>>>>>>> bf8efdbf67309c3a49bc8564e46fbcbec3885bf2
     return 0;
 }

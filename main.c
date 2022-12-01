@@ -6,8 +6,13 @@
 #include "reader.c"
 #include "writer.c"
 
+<<<<<<< HEAD
+#define DIML 20
+#define DIMC 20
+=======
 #define DIML 41
 #define DIMC 41
+>>>>>>> f4935b3bd4a8a8841d2801ffaa64d27693b21e27
 
 void generate(char array[DIML][DIMC])
 {
@@ -28,6 +33,23 @@ void generate(char array[DIML][DIMC])
     }
 }
 
+<<<<<<< HEAD
+void genererate_canon(char array[DIML][DIMC])
+{
+    for (int i = 0; i < DIML; i++)
+    {
+        for (int j = 0; j < DIMC; j++)
+        {
+            int rm = rand() % 2 + 1;
+            if (rm == 1)
+            {
+                array[i][j] = '.';
+            }
+            if(((i < 10 &&  i >= 8) && (j < 2 && j >= 0) )||( (i < 12 &&  i >= 10) && (j < 1 &&  j >= 0))){
+                array[i][j] = '@';
+            }
+
+=======
 void generate_empty(char array[DIML][DIMC])
 {
     for (int i = 0; i < DIML; i++)
@@ -35,21 +57,72 @@ void generate_empty(char array[DIML][DIMC])
         for(int j = 0;  j < DIMC; j++)
         {
             array[i][j] = '.';
+>>>>>>> f4935b3bd4a8a8841d2801ffaa64d27693b21e27
         }
     }
 }
 
-
-void display(char array[DIML][DIMC])
-{
-    for (int i = 0; i < DIML; i++)
-    {
-        for (int j = 0; j < DIMC; j++)
+<<<<<<< HEAD
+void display_column(){
+    if(DIMC >= 10){
+        printf("        ");
+        for (int j = 0; j < DIMC/10; j++)
         {
-            printf(" %c ", array[i][j]);  
+            printf("%d═══════════════════", j);
         }
         printf("\n");
     }
+    printf("        ");
+    for (int j = 0; j < DIMC/10; j++)
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            printf("%d ", i);
+        }
+    }
+    printf("\n");
+    printf("        ");
+    for (int j = 0; j < DIMC/10; j++)
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            printf("══");
+        }
+    }
+    printf("\n");
+}
+=======
+>>>>>>> f4935b3bd4a8a8841d2801ffaa64d27693b21e27
+
+void display(char array[DIML][DIMC])
+{
+    display_column();
+    for (int i = 0; i < DIML; i++)
+    {
+        if(DIML >= 10){
+            if(i%10 == 0){
+                printf("%d ║ %d ║ ", i/10, i%10);
+            }
+            else{
+                printf("  ║ %d ║ ", i%10);
+            }
+        }
+        for (int j = 0; j < DIMC; j++)
+        {
+<<<<<<< HEAD
+            printf("%c ", array[i][j]);
+=======
+            printf(" %c ", array[i][j]);  
+>>>>>>> f4935b3bd4a8a8841d2801ffaa64d27693b21e27
+        }
+<<<<<<< HEAD
+    }
+    printf("\n");
+}
+=======
+        printf("\n");
+    }
+>>>>>>> 72eea1ba6764ff6768e3f99f292b58a55c2e81e0
 
 }
 
@@ -139,18 +212,26 @@ void suivant(char array[DIML][DIMC])
     }
 }
 
-
 int main()
 {
     srand(time(NULL));
-    
+    //display_column();
     char a[DIML][DIMC];
+<<<<<<< HEAD
+    genererate(a);
+    //generate_canon(a);
+    //add_living(a);
+=======
     char filename[] = "test.txt";
+    char b[DIML][DIMC];
+    generate_empty(b);
+    generate(a);
+    write_arr(filename, b);
     while(1)
     {
         printf("\033[2J");
         display(a);
-        suivant(a);
+        //suivant(a);
         usleep(100000);
     }
     return 0;

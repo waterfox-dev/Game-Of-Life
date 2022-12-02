@@ -75,7 +75,7 @@ void display(char array[DIML][DIMC])
         for (int j = 0; j < DIMC; j++)
         {
             if(array[i][j] == Living){
-                printf("\e[93m■\e[0m ");
+                printf("\e[93m■\e[0m ");        //color table on : https://i.stack.imgur.com/9UVnC.png
             }
             if(array[i][j] == Dead){
                 printf("  ");
